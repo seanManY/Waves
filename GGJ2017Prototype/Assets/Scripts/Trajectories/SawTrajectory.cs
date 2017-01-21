@@ -28,7 +28,7 @@ public class SawTrajectory : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
     {
         SawWaveUpdate();	
 	}

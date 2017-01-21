@@ -23,7 +23,7 @@ public class SinTrajectory : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void FixedUpdate () 
     {
         SinWaveUpdate();		
 	}
