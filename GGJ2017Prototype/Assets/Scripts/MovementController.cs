@@ -39,7 +39,11 @@ public class MovementController : MonoBehaviour {
 	public float sawWaveHeight;
 	public float sawWaveDistance;
 	int sawWaveStage;
-	
+
+	void Start(){
+		rgbd.gravityScale = 0;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		if (!muteInput) {
@@ -62,11 +66,11 @@ public class MovementController : MonoBehaviour {
 
 	public void StandardMovement(){
 		if (Input.GetKey (KeyCode.D)) {
-			rgbd.MovePosition ((Vector2)rgbd.transform.position + Vector2.right * moveSpeed * Time.deltaTime);
+			//rgbd.MovePosition ((Vector2)rgbd.transform.position + Vector2.right * moveSpeed * Time.deltaTime);
 			facingDireciton = 1;
 		}
 		if (Input.GetKey (KeyCode.A)) {
-			rgbd.MovePosition ((Vector2)rgbd.transform.position - Vector2.right * moveSpeed * Time.deltaTime);
+			//rgbd.MovePosition ((Vector2)rgbd.transform.position - Vector2.right * moveSpeed * Time.deltaTime);
 			facingDireciton = -1;
 		}
 		if (Input.GetKeyDown (KeyCode.E)) {
@@ -85,7 +89,7 @@ public class MovementController : MonoBehaviour {
 
 	public void EndTriangleWave(){
 		triangleWaveSatisfied = true;
-		rgbd.gravityScale = 1;
+		//rgbd.gravityScale = 1;
 		muteInput = false;
 	}
 
@@ -102,6 +106,12 @@ public class MovementController : MonoBehaviour {
 			case 1:
 				lerpGoal = startPosition + Vector2.right*facingDireciton * triangleWaveDistance;
 				break;
+			case 2:
+				lerpGoal = startPosition - Vector2.up*triangleWaveHeight + Vector2.right*facingDireciton * triangleWaveDistance*3/2;
+				break;
+			case 3:
+				lerpGoal = startPosition + Vector2.right*facingDireciton*2 * triangleWaveDistance;
+				break;
 			default:
 				EndTriangleWave ();
 				break;
@@ -115,7 +125,7 @@ public class MovementController : MonoBehaviour {
 		triangleWaveStage = 0;
 		startPosition = gameObject.transform.position;
 		lerpGoal = startPosition + Vector2.up*triangleWaveHeight + Vector2.right*facingDireciton * triangleWaveDistance/2;
-		rgbd.gravityScale = 0;
+		//rgbd.gravityScale = 0;
 	}
 
 	public void StartSquareWave(){
@@ -124,7 +134,7 @@ public class MovementController : MonoBehaviour {
 		squareWaveStage = 0;
 		startPosition = gameObject.transform.position;
 		lerpGoal = startPosition + Vector2.up*squareWaveHeight;
-		rgbd.gravityScale = 0;
+		//rgbd.gravityScale = 0;
 	}
 
 	public void SquareWaveUpdate(){
@@ -153,7 +163,7 @@ public class MovementController : MonoBehaviour {
 
 	public void EndSquareWave(){
 		squareWaveSatisfied = true;
-		rgbd.gravityScale = 1;
+		//rgbd.gravityScale = 1;
 		muteInput = false;
 	}
 
@@ -161,7 +171,7 @@ public class MovementController : MonoBehaviour {
 		muteInput = true;
 		sinWaveSatisfied = false;
 		startPosition = gameObject.transform.position;
-		rgbd.gravityScale = 0;
+		//rgbd.gravityScale = 0;
 		lerpGoal = startPosition + Vector2.right*facingDireciton * sinWaveWavelength;
 		sinWaveTime = 0;
 		sinWaveStage = 0;
@@ -172,7 +182,7 @@ public class MovementController : MonoBehaviour {
 		//transform.position = lerpGoal + Vector2.up * Mathf.Sin (Time.time * sinWaveFrequency) * sinWaveHeight;
 
 		startPosition += (Vector2)transform.right*facingDireciton * Time.deltaTime * sinWaveWavelength;
-		transform.position = startPosition + (Vector2)transform.up * Mathf.Sin ((sinWaveTime + 2*Mathf.PI)* sinWaveFrequency) * sinWaveHeight;
+		transform.position = startPosition - (Vector2)transform.up * Mathf.Sin ((sinWaveTime + 2*Mathf.PI)* sinWaveFrequency) * sinWaveHeight;
 		sinWaveTime += Time.deltaTime;
 		if (sinWaveTime >= 6.3f*sinWaveTail / sinWaveFrequency) {
 			EndSinWave ();
@@ -182,7 +192,7 @@ public class MovementController : MonoBehaviour {
 
 	public void EndSinWave(){
 		sinWaveSatisfied = true;
-		rgbd.gravityScale = 1;
+		//rgbd.gravityScale = 1;
 		muteInput = false;
 	}
 
@@ -199,7 +209,7 @@ public class MovementController : MonoBehaviour {
 		sawWaveStage = 0;
 		startPosition = gameObject.transform.position;
 		lerpGoal = startPosition + Vector2.right*facingDireciton*sawWaveDistance + Vector2.up*sawWaveHeight;
-		rgbd.gravityScale = 0;
+		//rgbd.gravityScale = 0;
 	}
 
 	public void SawWaveUpdate(){
