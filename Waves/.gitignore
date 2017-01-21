@@ -1,3 +1,11 @@
+ #For Mac developers
+ # Unity generated #
+ # =============== #
+Temp/
+obj/
+Build
+Library/
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
