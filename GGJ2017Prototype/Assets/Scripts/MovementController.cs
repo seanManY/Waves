@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MovementController : MonoBehaviour {
 
@@ -25,6 +26,11 @@ public class MovementController : MonoBehaviour {
 
     int fireRate = 200;
     int fireCount = 0;
+
+    public Text triText;
+    public Text sinText;
+    public Text sqrText;
+    public Text sawText;
 
     //Square Wave
     bool squareWaveSatisfied = true;
@@ -63,9 +69,10 @@ public class MovementController : MonoBehaviour {
 
 		rgbd.gravityScale = 0;
 
-        //Set Wave Limits
+        //Set Wave Counter
         waveCount = new int[] {3,3,3,3};
-	}
+        setText();
+    }
 
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -117,18 +124,22 @@ public class MovementController : MonoBehaviour {
                 {
                     case 1:
                         waveCount[waveSelect]--;
+                        setText();
                         StartSinWave();
                         break;
                     case 2:
                         waveCount[waveSelect]--;
+                        setText();
                         StartSquareWave();
                         break;
                     case 3:
                         waveCount[waveSelect]--;
+                        setText();
                         StartSawWave();
                         break;
                     default:
                         waveCount[waveSelect]--;
+                        setText();
                         StartTriangleWave();
                         break;
                 }
@@ -392,4 +403,12 @@ public class MovementController : MonoBehaviour {
 
 		gameObject.transform.position = location;
 	}
+
+    void setText()
+    {
+        triText.text = waveCount[0].ToString();
+        sinText.text = waveCount[1].ToString();
+        sqrText.text = waveCount[2].ToString();
+        sawText.text = waveCount[3].ToString();
+    }
 }
