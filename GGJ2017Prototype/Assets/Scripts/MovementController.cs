@@ -16,7 +16,7 @@ public class MovementController : MonoBehaviour {
 	Vector2 startPosition;
 	Vector2 lerpGoal;
 
-	int facingDireciton = 1;
+	public int facingDireciton = 1;
     int waveSelect = 0;
     int tempWaveSelect = 0;
     int[] waveCount = new int[4];
@@ -328,14 +328,16 @@ public class MovementController : MonoBehaviour {
 
 
 	void OnCollisionEnter2D(Collision2D other){
-		EndSinWave ();
-		EndSawWave ();
-		EndSquareWave ();
-		EndTriangleWave ();
+		if (!other.gameObject.CompareTag ("teleporter")) {
+			EndSinWave ();
+			EndSawWave ();
+			EndSquareWave ();
+			EndTriangleWave ();
 
-		SystemManager.i.SpawnObject (Prefab.Explosion, gameObject.transform.position);
-		CameraController.i.ScreenShake (2f, .5f);
-		Destroy (gameObject);
+			SystemManager.i.SpawnObject (Prefab.Explosion, gameObject.transform.position);
+			CameraController.i.ScreenShake (2f, .5f);
+			Destroy (gameObject);
+		}
 	}
 
 
@@ -381,4 +383,13 @@ public class MovementController : MonoBehaviour {
         
         //traj.setWaveSelect(waveSelect);
     }
+
+	public void SetNewPosition(Vector2 location){
+		Vector2 distance = location - (Vector2)gameObject.transform.position;
+
+		startPosition += distance;
+		lerpGoal += distance;
+
+		gameObject.transform.position = location;
+	}
 }

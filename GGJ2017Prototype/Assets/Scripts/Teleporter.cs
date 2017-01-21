@@ -4,13 +4,41 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	public GameObject gateA;
+	public GameObject gateB;
+
+	public Vector2 offset;
+
+	public float activityDelay;
+	bool active = true;
+
+	void Update(){
+		if (activityDelay > 0) {
+			activityDelay -= Time.deltaTime;
+			if (activityDelay <= 0) {
+				active = true;
+			}
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void OnTriggerEnter2D(Collider2D other){
+		if (active) {
+			if (other.gameObject.CompareTag ("player")) {
+				Vector2 distance = (Vector2)other.gameObject.transform.position - (Vector2)gameObject.transform.position + offset*MovementController.i.facingDireciton;
+				if (gameObject == gateA) {
+					MovementController.i.SetNewPosition((Vector2)gateB.transform.position + distance);
+					gateB.GetComponent<Teleporter> ().Deactivate (1f);
+				} else {
+					MovementController.i.SetNewPosition((Vector2)gateA.transform.position + distance);
+					gateA.GetComponent<Teleporter> ().Deactivate (1f);
+				}
+			}
+			Deactivate(1f);
+		}
+	}
+
+	public void Deactivate(float time){
+		active = false;
+		activityDelay = time;
 	}
 }
