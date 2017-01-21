@@ -196,12 +196,6 @@ public class MovementController : MonoBehaviour {
 		muteInput = false;
 	}
 
-	void OnCollisionEnter2D(Collision2D other){
-		EndSinWave ();
-		EndSawWave ();
-		EndSquareWave ();
-		EndTriangleWave ();
-	}
 
 	public void StartSawWave(){
 		muteInput = true;
@@ -234,6 +228,20 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void EndSawWave(){
+		sawWaveSatisfied = true;
+		//rgbd.gravityScale = 1;
+		muteInput = false;
+	}
 
+
+	void OnCollisionEnter2D(Collision2D other){
+		EndSinWave ();
+		EndSawWave ();
+		EndSquareWave ();
+		EndTriangleWave ();
+
+		SystemManager.i.SpawnObject (Prefab.Explosion, gameObject.transform.position);
+		CameraController.i.ScreenShake (2f, .5f);
+		Destroy (gameObject);
 	}
 }
