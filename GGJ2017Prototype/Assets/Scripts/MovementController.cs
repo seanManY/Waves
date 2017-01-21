@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MovementController : MonoBehaviour {
 
+	public static MovementController i;
+
 	public Rigidbody2D rgbd;
 	public float moveSpeed;
 
@@ -57,6 +59,8 @@ public class MovementController : MonoBehaviour {
     int joyVert = 0;
 
 	void Start(){
+		i = this;
+
 		rgbd.gravityScale = 0;
 
         //Set Wave Limits
