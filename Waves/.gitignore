@@ -1,10 +1,10 @@
 #For Mac developers
 # Unity generated #
 # =============== #
-/Temp
-/obj
-/Build
-/Library
+GGJ2017Prototype/Temp
+GGJ2017Prototype/obj
+GGJ2017Prototype/Build
+GGJ2017Prototype/Library
 
 /[Ll]ibrary/
 /[Tt]emp/
