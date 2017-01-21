@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriTrajectory : MonoBehaviour {
+public class TriTrajectory : Trajectory {
 
-    Vector2 startPosition;
-    Vector2 lerpGoal;
+    
     int facingDireciton = 1;
 
     bool triangleWaveSatisfied = true;
@@ -13,8 +12,13 @@ public class TriTrajectory : MonoBehaviour {
     public float triangleWaveHeight;
     public float triangleWaveDistance;
 
+	public override void AwakeOverride(){
+	}
+	public override void UpdateOverride(){
+	}
+
 	// Use this for initialization
-	void Start () {
+	public override void StartOverride () {
         if (transform.rotation.eulerAngles.y == 180)
             facingDireciton = -1;
         startPosition = gameObject.transform.position;
@@ -22,11 +26,13 @@ public class TriTrajectory : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	public override void FixedUpdateOverride () 
     {
         TriangleWaveUpdate();	
 	}
 
+
+		
     public void TriangleWaveUpdate()
     {
         //Move towards the goal
@@ -55,4 +61,6 @@ public class TriTrajectory : MonoBehaviour {
             }
         }
     }
+		
+
 }

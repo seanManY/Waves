@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SawTrajectory : MonoBehaviour {
+public class SawTrajectory : Trajectory {
 
-    Vector2 startPosition;
     int facingDireciton = 1;
-    Vector2 lerpGoal;
 
     int waveSelect;
 
@@ -16,8 +14,13 @@ public class SawTrajectory : MonoBehaviour {
     public float sawWaveReturn;
     int sawWaveStage;
 
+	public override void AwakeOverride(){
+	}
+	public override void UpdateOverride(){
+	}
+
 	// Use this for initialization
-	void Start () {
+	public override void StartOverride () {
         if (transform.rotation.eulerAngles.y == 180)
             facingDireciton = -1;
 
@@ -28,7 +31,7 @@ public class SawTrajectory : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	public override void FixedUpdateOverride () 
     {
         SawWaveUpdate();	
 	}
@@ -56,4 +59,6 @@ public class SawTrajectory : MonoBehaviour {
             }
         }
     }
+		
+		
 }

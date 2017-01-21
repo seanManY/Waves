@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SinTrajectory : MonoBehaviour {
+public class SinTrajectory : Trajectory {
 
-    Vector2 startPosition;
     int facingDireciton = 1;
 
     int waveSelect; 
@@ -17,13 +16,18 @@ public class SinTrajectory : MonoBehaviour {
     int sinWaveStage;
     public float sinWaveTail;
 
+	public override void AwakeOverride(){
+	}
+	public override void UpdateOverride(){
+	}
+
 	// Use this for initialization
-	void Start () {
+	public override void StartOverride () {
         startPosition = gameObject.transform.position;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () 
+	public override void FixedUpdateOverride () 
     {
         SinWaveUpdate();		
 	}
@@ -47,4 +51,7 @@ public class SinTrajectory : MonoBehaviour {
     {
         waveSelect = newWaveSelect;
     }
+
+
+		
 }

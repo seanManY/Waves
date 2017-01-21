@@ -27,13 +27,23 @@ public class Teleporter : MonoBehaviour {
 				Vector2 distance = (Vector2)other.gameObject.transform.position - (Vector2)gameObject.transform.position + offset*MovementController.i.facingDireciton;
 				if (gameObject == gateA) {
 					MovementController.i.SetNewPosition((Vector2)gateB.transform.position + distance);
-					gateB.GetComponent<Teleporter> ().Deactivate (1f);
+//					gateB.GetComponent<Teleporter> ().Deactivate (.1f);
 				} else {
 					MovementController.i.SetNewPosition((Vector2)gateA.transform.position + distance);
-					gateA.GetComponent<Teleporter> ().Deactivate (1f);
+//					gateA.GetComponent<Teleporter> ().Deactivate (.1f);
 				}
 			}
-			Deactivate(1f);
+			else if (other.gameObject.CompareTag ("trajectory")) {
+				Vector2 distance = (Vector2)other.gameObject.transform.position - (Vector2)gameObject.transform.position + offset*MovementController.i.facingDireciton;
+				if (gameObject == gateA) {
+					other.GetComponent<Trajectory>().SetNewPosition((Vector2)gateB.transform.position + distance);
+//					gateB.GetComponent<Teleporter> ().Deactivate (.1f);
+				} else {
+					other.GetComponent<Trajectory>().SetNewPosition((Vector2)gateA.transform.position + distance);
+//					gateA.GetComponent<Teleporter> ().Deactivate (.1f);
+				}
+			}
+//			Deactivate(.1f);
 		}
 	}
 

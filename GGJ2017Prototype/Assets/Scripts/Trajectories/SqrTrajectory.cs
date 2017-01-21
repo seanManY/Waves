@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SqrTrajectory : MonoBehaviour {
+public class SqrTrajectory : Trajectory {
 
-    Vector2 startPosition;
-    Vector2 lerpGoal;
 
     int facingDireciton = 1;
 
@@ -15,8 +13,13 @@ public class SqrTrajectory : MonoBehaviour {
     public float squareWaveDistance;
     public float squareWaveReturn;
 
+	public override void AwakeOverride(){
+	}
+	public override void UpdateOverride(){
+	}
+
 	// Use this for initialization
-	void Start () {
+	public override void StartOverride () {
         if (transform.rotation.eulerAngles.y == 180)
             facingDireciton = -1;
 
@@ -26,7 +29,7 @@ public class SqrTrajectory : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	public override void FixedUpdateOverride () {
         SquareWaveUpdate();
 	}
 
@@ -56,4 +59,6 @@ public class SqrTrajectory : MonoBehaviour {
             }
         }
     }
+		
+		
 }
