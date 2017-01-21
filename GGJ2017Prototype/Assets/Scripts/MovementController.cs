@@ -392,11 +392,4 @@ public class MovementController : MonoBehaviour {
 
 		gameObject.transform.position = location;
 	}
-
-	public void HaltMovement(){
-		squareWaveSatisfied = true;
-		triangleWaveSatisfied = true;
-		sinWaveSatisfied = true;
-		sawWaveSatisfied = true;
-	}
 }
