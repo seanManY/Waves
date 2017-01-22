@@ -411,4 +411,11 @@ public class MovementController : MonoBehaviour {
         sqrText.text = waveCount[2].ToString();
         sawText.text = waveCount[3].ToString();
     }
+
+	public void HaltMovement(){
+		squareWaveSatisfied = true;
+		triangleWaveSatisfied = true;
+		sinWaveSatisfied = true;
+		sawWaveSatisfied = true;
+	}
 }

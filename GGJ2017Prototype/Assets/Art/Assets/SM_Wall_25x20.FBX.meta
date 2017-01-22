@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 423ff40c6efd745b298c27c6446dab78
-timeCreated: 1485042868
+guid: c89a7c67b4db84ce8886d489a3b5a9ad
+timeCreated: 1485043446
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,8 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: SM_Wall_50x50:Wall_50x50
+    4300000: Wall_25x20
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -72,7 +73,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
