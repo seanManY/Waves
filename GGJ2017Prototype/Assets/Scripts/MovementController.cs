@@ -27,6 +27,10 @@ public class MovementController : MonoBehaviour {
 
 	public bool muteInput = false;
 
+    public PauseMenu pause;
+    public SoundManager sounds;
+    public Renderer rend;
+
     int fireRate = 200;
     int fireCount = 0;
 
@@ -347,7 +351,8 @@ public class MovementController : MonoBehaviour {
 	}
 
 
-	void OnCollisionEnter2D(Collision2D other){
+    IEnumerator OnCollisionEnter2D(Collision2D other)
+    {
 		if (!other.gameObject.CompareTag ("teleporter") && !other.gameObject.CompareTag("fan")) {
 			EndSinWave ();
 			EndSawWave ();
@@ -358,7 +363,12 @@ public class MovementController : MonoBehaviour {
 
 			SystemManager.i.SpawnObject (Prefab.Explosion, gameObject.transform.position);
 			CameraController.i.ScreenShake (2f, .5f);
-			Destroy (gameObject);
+            rend = GetComponent<Renderer>();
+            rend.enabled = false;
+            yield return new WaitForSeconds(3.0f);
+			Destroy (gameObject);            
+            pause.Pause();
+
 		}
 	}
 
