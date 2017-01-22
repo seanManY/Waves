@@ -9,19 +9,33 @@ public class Teleporter : MonoBehaviour {
 
 	public Vector2 offset;
 
-	public float activityDelay;
+	//public float activityDelay;
 	bool active = true;
 
 	void Update(){
-		if (activityDelay > 0) {
-			activityDelay -= Time.deltaTime;
-			if (activityDelay <= 0) {
+		//if (activityDelay > 0) {
+		//	activityDelay -= Time.deltaTime;
+		//	if (activityDelay <= 0) {
 				active = true;
+		//	}
+		//}
+	}
+
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.CompareTag ("player")) {
+			Vector2 distance = (Vector2)other.gameObject.transform.position - (Vector2)gameObject.transform.position + offset*MovementController.i.facingDireciton;
+			if (gameObject == gateA) {
+				MovementController.i.SetNewPosition((Vector2)gateB.transform.position + distance);
+				//					gateB.GetComponent<Teleporter> ().Deactivate (.1f);
+			} else {
+				MovementController.i.SetNewPosition((Vector2)gateA.transform.position + distance);
+				//					gateA.GetComponent<Teleporter> ().Deactivate (.1f);
 			}
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other){
+		Debug.Log ("Teleporter Collision");
 		if (active) {
 			if (other.gameObject.CompareTag ("player")) {
 				Vector2 distance = (Vector2)other.gameObject.transform.position - (Vector2)gameObject.transform.position + offset*MovementController.i.facingDireciton;
@@ -49,6 +63,6 @@ public class Teleporter : MonoBehaviour {
 
 	public void Deactivate(float time){
 		active = false;
-		activityDelay = time;
+		//activityDelay = time;
 	}
 }

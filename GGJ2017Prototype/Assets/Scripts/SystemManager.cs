@@ -10,8 +10,12 @@ public class SystemManager : MonoBehaviour {
 	public GameObject[] prefabs;								//List of all prefabs that may be instantiated
 	List<GameObject> activeObjects = new List<GameObject>();	//All active objects controlled by this script
 
+	public float playerSpawnX;
+	public float playerSpawnY;
+
 	void Start(){
 		i = this;
+		//SpawnObject(Prefab.Player, new Vector3(playerSpawnX, playerSpawnY, 0));
 	}
 
 	void Update(){
@@ -32,5 +36,6 @@ public class SystemManager : MonoBehaviour {
 	
 //Enum to easily convert prefab names to the appropriate index
 public enum Prefab{
-	Explosion = 0
+	Explosion = 0,
+	Player = 1
 };

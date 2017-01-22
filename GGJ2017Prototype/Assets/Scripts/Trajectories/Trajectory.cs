@@ -42,8 +42,8 @@ public abstract class Trajectory : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		
-		if (!other.gameObject.CompareTag ("teleporter") && !other.gameObject.CompareTag("player") && !other.gameObject.CompareTag("trajectory")) {
-			Debug.Log ("Collision with " + other);
+		if (!other.gameObject.CompareTag ("teleporter") && !other.gameObject.CompareTag("player") && !other.gameObject.CompareTag("trajectory") && !other.gameObject.CompareTag("fan")) {
+			//Debug.Log ("Collision with " + other);
 			Destroy (gameObject);
 		}
 	}

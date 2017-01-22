@@ -72,7 +72,7 @@ public class MovementController : MonoBehaviour {
 		rgbd.gravityScale = 0;
 
         //Set Wave Counter
-        waveCount = new int[] {3,3,3,3};
+        waveCount = new int[] {30,30,30,30};
         //setText();
 
 		Time.timeScale = timescale;
@@ -124,34 +124,34 @@ public class MovementController : MonoBehaviour {
             waveSelect = (waveSelect + 3) % 4;
             Debug.Log(waveSelect);
         }
-        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.JoystickButton0))
+        if(Input.GetKeyDown(KeyCode.Space) /*|| Input.GetKeyDown(KeyCode.JoystickButton0)*/)
         {
-            if(waveCount[waveSelect] > 0)
-            {
-                switch (waveSelect)
-                {
-                    case 1:
-                        waveCount[waveSelect]--;
+			if (waveCount [waveSelect] > 0) {
+				switch (waveSelect) {
+				case 1:
+					waveCount [waveSelect]--;
                         //setText();
-                        StartSinWave();
-                        break;
-                    case 2:
-                        waveCount[waveSelect]--;
+					StartSinWave ();
+					break;
+				case 2:
+					waveCount [waveSelect]--;
                         //setText();
-                        StartSquareWave();
-                        break;
-                    case 3:
-                        waveCount[waveSelect]--;
+					StartSquareWave ();
+					break;
+				case 3:
+					waveCount [waveSelect]--;
                         //setText();
-                        StartSawWave();
-                        break;
-                    default:
-                        waveCount[waveSelect]--;
+					StartSawWave ();
+					break;
+				default:
+					waveCount [waveSelect]--;
                         //setText();
-                        StartTriangleWave();
-                        break;
-                }
-            }
+					StartTriangleWave ();
+					break;
+				}
+			} else {
+				Debug.Log ("Out of uses");
+			}
         }
         /*
         //Joystick Controller
@@ -353,6 +353,8 @@ public class MovementController : MonoBehaviour {
 			EndSquareWave ();
 			EndTriangleWave ();
 
+			Debug.Log (other.gameObject.tag);
+
 			SystemManager.i.SpawnObject (Prefab.Explosion, gameObject.transform.position);
 			CameraController.i.ScreenShake (2f, .5f);
 			Destroy (gameObject);
@@ -426,5 +428,7 @@ public class MovementController : MonoBehaviour {
 		triangleWaveSatisfied = true;
 		sinWaveSatisfied = true;
 		sawWaveSatisfied = true;
+		waveSelect = tempWaveSelect;
+		muteInput = false;
 	}
 }
