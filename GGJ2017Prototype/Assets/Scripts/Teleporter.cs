@@ -7,6 +7,9 @@ public class Teleporter : MonoBehaviour {
 	public GameObject gateA;
 	public GameObject gateB;
 
+
+    public SoundManager soundScript;
+
 	public Vector2 offset;
 
 	//public float activityDelay;
@@ -31,6 +34,8 @@ public class Teleporter : MonoBehaviour {
 				MovementController.i.SetNewPosition((Vector2)gateA.transform.position + distance);
 				//					gateA.GetComponent<Teleporter> ().Deactivate (.1f);
 			}
+
+            soundScript.PlaySound(1, 1f);
 		}
 	}
 
