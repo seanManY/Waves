@@ -21,7 +21,7 @@ public class MenuManager : MonoBehaviour {
         currentScene++;
         if(currentScene >= scenes.Length)
             SceneManager.LoadScene("main_menu");
-        SceneManager.LoadScene(scenes[currentScene + 2]);
+        SceneManager.LoadScene(scenes[currentScene + 1]);
     }
 
 	public void Quit()
