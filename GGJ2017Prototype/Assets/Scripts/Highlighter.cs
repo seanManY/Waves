@@ -39,4 +39,23 @@ public class Highlighter : MonoBehaviour {
                 break;
         }
     }
+
+    /*public void moveHL(int waveSelect)
+    {
+        switch (waveSelect)
+        {
+            case 1:
+                gameObject.transform.position = new Vector2(-40, 26);
+                break;
+            case 2:
+                gameObject.transform.position = new Vector2(72, 26);
+                break;
+            case 3:
+                gameObject.transform.position = new Vector2(184, 26);
+                break;
+            default:
+                gameObject.transform.position = new Vector2(-151, 26);
+                break;
+        }
+    }*/
 }

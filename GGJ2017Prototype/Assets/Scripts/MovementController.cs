@@ -120,12 +120,12 @@ public class MovementController : MonoBehaviour {
 		}
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            waveSelect = (waveSelect + 1) % 4;
+            waveSelect = (waveSelect + 3) % 4;
             highlight.moveHL(waveSelect);
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            waveSelect = (waveSelect + 3) % 4;
+            waveSelect = (waveSelect + 1) % 4;
             highlight.moveHL(waveSelect);
         }
         if(Input.GetKeyDown(KeyCode.Space) /*|| Input.GetKeyDown(KeyCode.JoystickButton0)*/)
