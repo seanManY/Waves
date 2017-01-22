@@ -51,7 +51,7 @@ public class SoundManager : MonoBehaviour {
 		}
 	}
 
-	public void PlaySound(Sound clipNumber, float volume){
+	public void PlaySound(int clipNumber, float volume){
 		AudioSource source = gameObject.AddComponent<AudioSource> ();
 		source.clip = clips [(int)clipNumber];
 		source.volume = volume;
@@ -80,6 +80,8 @@ public class SoundManager : MonoBehaviour {
 		}
 		duration = d;
 	}
+
+    
 }
 
 	public enum Sound{
