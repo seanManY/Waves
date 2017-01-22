@@ -5,11 +5,12 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour {
 
 	public GameObject pauseMenu;
+    float timescale;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        timescale = Time.timeScale;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -27,7 +28,7 @@ public class PauseMenu : MonoBehaviour {
         }
         else
         {
-            Time.timeScale = 1;
+            Time.timeScale = timescale;
         }
     }
 }
