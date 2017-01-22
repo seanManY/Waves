@@ -24,7 +24,13 @@ public class MenuManager : MonoBehaviour {
     //    if(currentScene >= scenes.Length)
     //        SceneManager.LoadScene("main_menu");
     //    else
-            SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(nextScene);
+    }
+
+    public void mainMenu()
+    {
+        soundScript.EndSoundAbrupt("GGJ 17_Waves_v1");
+        SceneManager.LoadScene("main_menu");
     }
 
 	public void Quit()
