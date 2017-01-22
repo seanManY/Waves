@@ -229,6 +229,7 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void StartTriangleWave(){
+        sounds.PlaySound(5, .5f);
         tempWaveSelect = 0;
         waveSelect = -1;
 		muteInput = true;
@@ -240,7 +241,8 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void StartSquareWave(){
-        
+
+        sounds.PlaySound(3, .5f);
         tempWaveSelect = 2;
         waveSelect = -1;
 		muteInput = true;
@@ -285,7 +287,7 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void StartSinWave(){
-        
+        sounds.PlaySound(4, .5f);
         tempWaveSelect = 1;
         waveSelect = -1;
 		muteInput = true;
@@ -321,7 +323,7 @@ public class MovementController : MonoBehaviour {
 
 
 	public void StartSawWave(){
-
+        sounds.PlaySound(6, .5f);
         before = System.DateTime.Now;
         tempWaveSelect = 3;
         waveSelect = -1;
