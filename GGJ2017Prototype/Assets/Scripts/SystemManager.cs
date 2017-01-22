@@ -28,7 +28,7 @@ public class SystemManager : MonoBehaviour {
 		activeObjects.Add(Instantiate (prefabs [index], location, Quaternion.identity) as GameObject);
 	}
 
-	//Convert enum to index and call SPawnObject
+	//Convert enum to index and call SpawnObject
 	public void SpawnObject(Prefab obj, Vector3 location){
 		SpawnObject((int)obj, location);
 	}

@@ -22,17 +22,17 @@ public class MovementController : MonoBehaviour {
 	public int facingDireciton = 1;
     int waveSelect = 0;
     int tempWaveSelect = 0;
-    int[] waveCount = new int[4];
+    public int[] waveCount = new int[4];
 
 	public bool muteInput = false;
 
     int fireRate = 200;
     int fireCount = 0;
 
-//    public Text triText;
-//    public Text sinText;
-//    public Text sqrText;
-//    public Text sawText;
+    public Text triText;
+    public Text sinText;
+    public Text sqrText;
+    public Text sawText;
 
     //Square Wave
     bool squareWaveSatisfied = true;
@@ -72,8 +72,8 @@ public class MovementController : MonoBehaviour {
 		rgbd.gravityScale = 0;
 
         //Set Wave Counter
-        waveCount = new int[] {30,30,30,30};
-        //setText();
+        //waveCount = new int[] {30,30,30,30};
+        setText();
 
 		Time.timeScale = timescale;
     }
@@ -130,22 +130,23 @@ public class MovementController : MonoBehaviour {
 				switch (waveSelect) {
 				case 1:
 					waveCount [waveSelect]--;
-                        //setText();
+                    setText();
 					StartSinWave ();
 					break;
 				case 2:
+                        Debug.Log("Stuff");
 					waveCount [waveSelect]--;
-                        //setText();
+                    setText();
 					StartSquareWave ();
 					break;
 				case 3:
 					waveCount [waveSelect]--;
-                        //setText();
+                    setText();
 					StartSawWave ();
 					break;
 				default:
 					waveCount [waveSelect]--;
-                        //setText();
+                    setText();
 					StartTriangleWave ();
 					break;
 				}
@@ -414,14 +415,14 @@ public class MovementController : MonoBehaviour {
 		gameObject.transform.position = location;
 	}
 
-	/*
+	
     void setText()
     {
         triText.text = waveCount[0].ToString();
         sinText.text = waveCount[1].ToString();
         sqrText.text = waveCount[2].ToString();
         sawText.text = waveCount[3].ToString();
-    }*/
+    }
 
 	public void HaltMovement(){
 		squareWaveSatisfied = true;
