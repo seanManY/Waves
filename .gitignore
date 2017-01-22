@@ -36,3 +36,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+GGJ2017Prototype/Assets/Sound_Audio/RetroGamesSoundFX/Teleport.meta
+GGJ2017Prototype/Assets/Sound_Audio/RetroGamesSoundFX/Teleport/Teleport1.wav
+GGJ2017Prototype/Assets/Sound_Audio/RetroGamesSoundFX/UFO.meta
