@@ -59,7 +59,8 @@ public class TriTrajectory : Trajectory {
                 case 3:
                     lerpGoal = startPosition + Vector2.right * facingDireciton * 2 * triangleWaveDistance;
                     break;
-                default:
+			default:
+				Debug.Log ("Destory based on stage");
                     Destroy(gameObject);
                     break;
             }

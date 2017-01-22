@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class MovementController : MonoBehaviour {
 
+	public float timescale;
+
 	public static MovementController i;
 
 	public Rigidbody2D rgbd;
@@ -72,13 +74,19 @@ public class MovementController : MonoBehaviour {
         //Set Wave Counter
         waveCount = new int[] {3,3,3,3};
         //setText();
+
+		Time.timeScale = timescale;
     }
 
-	// Update is called once per frame
-	void FixedUpdate () {
+	void Update(){
 		if (!muteInput) {
 			StandardMovement ();
 		}
+	}
+
+	// Update is called once per frame
+	void FixedUpdate () {
+		
 		if (!squareWaveSatisfied) {
 			SquareWaveUpdate ();
 		}
