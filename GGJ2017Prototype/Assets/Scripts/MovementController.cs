@@ -27,10 +27,10 @@ public class MovementController : MonoBehaviour {
     int fireRate = 200;
     int fireCount = 0;
 
-    public Text triText;
-    public Text sinText;
-    public Text sqrText;
-    public Text sawText;
+//    public Text triText;
+//    public Text sinText;
+//    public Text sqrText;
+//    public Text sawText;
 
     //Square Wave
     bool squareWaveSatisfied = true;
@@ -71,7 +71,7 @@ public class MovementController : MonoBehaviour {
 
         //Set Wave Counter
         waveCount = new int[] {3,3,3,3};
-        setText();
+        //setText();
     }
 
 	// Update is called once per frame
@@ -124,22 +124,22 @@ public class MovementController : MonoBehaviour {
                 {
                     case 1:
                         waveCount[waveSelect]--;
-                        setText();
+                        //setText();
                         StartSinWave();
                         break;
                     case 2:
                         waveCount[waveSelect]--;
-                        setText();
+                        //setText();
                         StartSquareWave();
                         break;
                     case 3:
                         waveCount[waveSelect]--;
-                        setText();
+                        //setText();
                         StartSawWave();
                         break;
                     default:
                         waveCount[waveSelect]--;
-                        setText();
+                        //setText();
                         StartTriangleWave();
                         break;
                 }
@@ -339,7 +339,7 @@ public class MovementController : MonoBehaviour {
 
 
 	void OnCollisionEnter2D(Collision2D other){
-		if (!other.gameObject.CompareTag ("teleporter")) {
+		if (!other.gameObject.CompareTag ("teleporter") && !other.gameObject.CompareTag("fan")) {
 			EndSinWave ();
 			EndSawWave ();
 			EndSquareWave ();
@@ -404,13 +404,14 @@ public class MovementController : MonoBehaviour {
 		gameObject.transform.position = location;
 	}
 
+	/*
     void setText()
     {
         triText.text = waveCount[0].ToString();
         sinText.text = waveCount[1].ToString();
         sqrText.text = waveCount[2].ToString();
         sawText.text = waveCount[3].ToString();
-    }
+    }*/
 
 	public void HaltMovement(){
 		squareWaveSatisfied = true;
