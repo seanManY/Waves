@@ -20,11 +20,18 @@ public class MenuManager : MonoBehaviour {
     public void nextLevel()
     {
         soundScript.EndSoundAbrupt("GGJ 17_Waves_v1");
+<<<<<<< HEAD
     //    currentScene += 2;
     //    if(currentScene >= scenes.Length)
     //        SceneManager.LoadScene("main_menu");
     //    else
             SceneManager.LoadScene(nextScene);
+=======
+        currentScene++;
+        if(currentScene >= scenes.Length)
+            SceneManager.LoadScene("main_menu");
+        SceneManager.LoadScene(scenes[currentScene + 1]);
+>>>>>>> origin/master
     }
 
 	public void Quit()
