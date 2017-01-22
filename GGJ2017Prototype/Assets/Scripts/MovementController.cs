@@ -31,6 +31,7 @@ public class MovementController : MonoBehaviour {
     public SoundManager sounds;
     public Renderer rend;
     System.DateTime before;
+    public GameObject child;
 
     int fireRate = 200;
     int fireCount = 0;
@@ -114,10 +115,12 @@ public class MovementController : MonoBehaviour {
 		if (Input.GetKey (KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) {
 			//rgbd.MovePosition ((Vector2)rgbd.transform.position + Vector2.right * moveSpeed * Time.deltaTime);
 			facingDireciton = 1;
+            child.transform.rotation = Quaternion.Euler(0, 90, 0);
 		}
 		if (Input.GetKey (KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) {
 			//rgbd.MovePosition ((Vector2)rgbd.transform.position - Vector2.right * moveSpeed * Time.deltaTime);
 			facingDireciton = -1;
+            child.transform.rotation = Quaternion.Euler(0, -90, 0);
 		}
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -382,6 +385,7 @@ public class MovementController : MonoBehaviour {
 			CameraController.i.ScreenShake (2f, .5f);
             rend = GetComponent<Renderer>();
             rend.enabled = false;
+            Destroy(child.gameObject);
             sounds.PlaySound(2, 1f);
             yield return new WaitForSeconds(10.0f);
             Debug.Log(other.gameObject.tag);
