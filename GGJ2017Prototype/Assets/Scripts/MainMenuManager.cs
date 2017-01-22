@@ -20,7 +20,7 @@ public class MainMenuManager : MonoBehaviour {
     public void StartButton()
     {
         loadingScreen.SetActive(true);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(nextScene);
     }
 
     public void QuitButton()
