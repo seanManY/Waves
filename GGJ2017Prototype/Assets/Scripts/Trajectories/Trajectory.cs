@@ -45,4 +45,6 @@ public abstract class Trajectory : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
+	public abstract void HaltMovement ();
 }

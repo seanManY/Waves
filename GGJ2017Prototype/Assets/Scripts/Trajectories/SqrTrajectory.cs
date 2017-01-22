@@ -18,6 +18,10 @@ public class SqrTrajectory : Trajectory {
 	public override void UpdateOverride(){
 	}
 
+	public override void HaltMovement(){
+		squareWaveSatisfied = true;
+	}
+
 	// Use this for initialization
 	public override void StartOverride () {
         if (transform.rotation.eulerAngles.y == 180)

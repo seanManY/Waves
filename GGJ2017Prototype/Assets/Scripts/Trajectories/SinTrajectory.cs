@@ -21,6 +21,10 @@ public class SinTrajectory : Trajectory {
 	public override void UpdateOverride(){
 	}
 
+	public override void HaltMovement(){
+		sinWaveSatisfied = true;
+	}
+
 	// Use this for initialization
 	public override void StartOverride () {
         startPosition = gameObject.transform.position;

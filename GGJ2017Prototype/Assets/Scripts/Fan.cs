@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
+	void OnCollisionEnter2D(Collision2D other){
+		if(other.gameObject.CompareTag("player")){
+			MovementController.i.HaltMovement ();
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(other.gameObject.CompareTag("trajectory")){
+			other.gameObject.GetComponent<Trajectory> ().HaltMovement ();
+		}
 	}
 }

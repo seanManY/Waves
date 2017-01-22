@@ -19,6 +19,10 @@ public class SawTrajectory : Trajectory {
 	public override void UpdateOverride(){
 	}
 
+	public override void HaltMovement(){
+		sawWaveSatisfied = true;
+	}
+
 	// Use this for initialization
 	public override void StartOverride () {
         if (transform.rotation.eulerAngles.y == 180)
