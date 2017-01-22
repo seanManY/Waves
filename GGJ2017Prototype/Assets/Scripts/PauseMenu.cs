@@ -24,7 +24,8 @@ public class PauseMenu : MonoBehaviour {
         pauseMenu.SetActive(!pauseMenu.activeSelf);
         if (pauseMenu.activeSelf == true)
         {
-            Time.timeScale = 0;
+            
+            Time.timeScale = 0;;
         }
         else
         {

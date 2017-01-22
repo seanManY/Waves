@@ -30,6 +30,7 @@ public class MovementController : MonoBehaviour {
     public PauseMenu pause;
     public SoundManager sounds;
     public Renderer rend;
+    System.DateTime before;
 
     int fireRate = 200;
     int fireCount = 0;
@@ -197,6 +198,8 @@ public class MovementController : MonoBehaviour {
 		//rgbd.gravityScale = 1;
 		muteInput = false;
         waveSelect = tempWaveSelect;
+
+        
 	}
 
 	public void TriangleWaveUpdate(){
@@ -237,6 +240,7 @@ public class MovementController : MonoBehaviour {
 	}
 
 	public void StartSquareWave(){
+        
         tempWaveSelect = 2;
         waveSelect = -1;
 		muteInput = true;
@@ -276,9 +280,12 @@ public class MovementController : MonoBehaviour {
 		//rgbd.gravityScale = 1;
 		muteInput = false;
         waveSelect = tempWaveSelect;
+
+        
 	}
 
 	public void StartSinWave(){
+        
         tempWaveSelect = 1;
         waveSelect = -1;
 		muteInput = true;
@@ -293,13 +300,15 @@ public class MovementController : MonoBehaviour {
 	public void SinWaveUpdate(){
 		//lerpGoal += Vector2.right*facingDireciton * Time.deltaTime * sinWaveDistance;
 		//transform.position = lerpGoal + Vector2.up * Mathf.Sin (Time.time * sinWaveFrequency) * sinWaveHeight;
-
+        
 		startPosition += (Vector2)transform.right*facingDireciton * Time.deltaTime * sinWaveWavelength;
 		transform.position = startPosition - (Vector2)transform.up * Mathf.Sin ((sinWaveTime + 2*Mathf.PI)* sinWaveFrequency) * sinWaveHeight;
 		sinWaveTime += Time.deltaTime;
 		if (sinWaveTime >= 6.3f*sinWaveTail / sinWaveFrequency) {
 			EndSinWave ();
 		}
+
+        
 
 	}
 
@@ -312,6 +321,8 @@ public class MovementController : MonoBehaviour {
 
 
 	public void StartSawWave(){
+
+        before = System.DateTime.Now;
         tempWaveSelect = 3;
         waveSelect = -1;
 		muteInput = true;
@@ -348,6 +359,10 @@ public class MovementController : MonoBehaviour {
 		//rgbd.gravityScale = 1;
 		muteInput = false;
         waveSelect = tempWaveSelect;
+
+        System.DateTime after = System.DateTime.Now;
+        System.TimeSpan duration = after.Subtract(before);
+        Debug.Log("Duration in milliseconds: " + duration.Milliseconds);
 	}
 
 
