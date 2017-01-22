@@ -12,6 +12,7 @@ public class MainMenuManager : MonoBehaviour {
 	void Start () {
         //Play main menu music
         //SoundManager.i.PlaySound(Sound.Song1);
+
 	}
 	
 
@@ -19,7 +20,7 @@ public class MainMenuManager : MonoBehaviour {
     public void StartButton()
     {
         loadingScreen.SetActive(true);
-        SceneManager.LoadScene(nextScene);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitButton()
