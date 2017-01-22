@@ -11,6 +11,7 @@ public class MovementController : MonoBehaviour {
 	public Rigidbody2D rgbd;
 	public float moveSpeed;
 
+    public Highlighter highlight;
     public GameObject SinTrajectory;
     public GameObject TriTrajectory;
     public GameObject SawTrajectory;
@@ -115,14 +116,13 @@ public class MovementController : MonoBehaviour {
 		}
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-			Debug.Log ("Pre-increment: " + waveSelect);
             waveSelect = (waveSelect + 1) % 4;
-            Debug.Log(waveSelect);
+            highlight.moveHL(waveSelect);
         }
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             waveSelect = (waveSelect + 3) % 4;
-            Debug.Log(waveSelect);
+            highlight.moveHL(waveSelect);
         }
         if(Input.GetKeyDown(KeyCode.Space) /*|| Input.GetKeyDown(KeyCode.JoystickButton0)*/)
         {
