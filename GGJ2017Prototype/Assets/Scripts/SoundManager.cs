@@ -21,7 +21,7 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	void Start(){
-		//PlaySound (Sound.Test, 1f);
+		PlaySound (0, 1f);
 		//EndSoundFade ("Test", 5f);
 		DontDestroyOnLoad(gameObject);
 	}
