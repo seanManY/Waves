@@ -386,7 +386,7 @@ public class MovementController : MonoBehaviour {
             rend = GetComponent<Renderer>();
             rend.enabled = false;
             Destroy(child.gameObject);
-            sounds.PlaySound(2, 1f);
+            sounds.PlaySound(2, .5f);
             yield return new WaitForSeconds(10.0f);
             Debug.Log(other.gameObject.tag);
 			Destroy (gameObject);
